@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import Arch from './components/Arch';
 import BettingTable from './components/BettingTable';
 import Dice from './components/Dice';
+import GuideModal from './components/GuideModal';
 import {
   INITIAL_TILES,
   rollDice,
@@ -27,6 +28,7 @@ function App() {
     breakdown: BetResult[];
     totalWin: number;
   } | null>(null);
+  const [showGuide, setShowGuide] = useState(true);
 
   const handlePlaceBet = (type: BetType, value: string | number) => {
     if (isGameOver || isRolling) return;
@@ -46,7 +48,12 @@ function App() {
 
   const processRoll = useCallback(async () => {
     if (isRolling || isGameOver) return;
+    const hasArchBets = bets.some(b => b.type === 'ARCH');
     const hasInsideBets = bets.some(b => b.type !== 'ARCH');
+    if (!hasRolled && !hasArchBets) {
+      setGameMessage('Place at least one arch bet first!');
+      return;
+    }
     if (!hasInsideBets) {
       setGameMessage('Place at least one inside bet first!');
       return;
@@ -127,7 +134,7 @@ function App() {
     const hasInsideBets = bets.some(b => b.type !== 'ARCH');
     if (over) {
       setIsGameOver(true);
-      setGameMessage(`Game Over: ${reason}`);
+      setGameMessage(`Game Over: ${reason} Final balance: $${balance}`);
     } else if (balance === 0 && !hasInsideBets && !isRolling) {
       setGameMessage('You are flat broke!');
       const t = setTimeout(() => setIsGameOver(true), 1500);
@@ -148,6 +155,7 @@ function App() {
 
   return (
     <div className="game-container">
+      {showGuide && <GuideModal onClose={() => setShowGuide(false)} />}
       {isGameOver && (
         <div className="game-over-overlay">
           <div className="game-over-content">
@@ -164,35 +172,39 @@ function App() {
         <div className="balance-display">Balance: ${balance}</div>
       </header>
 
-      <Arch activeTiles={activeTiles} />
-
-      <div className="message-area">
-        {gameMessage}
-      </div>
-
-      <div className="controls-area">
-        <Dice values={lastRoll} isRolling={isRolling} />
-        <button
-          onClick={processRoll}
-          disabled={isRolling || isGameOver || !bets.some(b => b.type !== 'ARCH')}
-          className="roll-button"
-        >
-          ROLL
-        </button>
-        {isGameOver && (
-          <button onClick={resetGame} className="roll-button" style={{ border: '2px solid var(--neon-cyan)' }}>
-            RESTART
-          </button>
-        )}
-      </div>
-
-      <BettingTable
+      <div className="game-main">
+        <div className="game-board">
+          <Arch activeTiles={activeTiles} />
+          <BettingTable
         onPlaceBet={handlePlaceBet}
         bets={bets}
         activeTiles={activeTiles}
         hasRolled={hasRolled}
         lastRollResult={lastRollResult}
-      />
+          />
+        </div>
+
+        <div className="game-controls">
+          <div className="message-area">
+            {gameMessage}
+          </div>
+          <div className="controls-area">
+            <Dice values={lastRoll} isRolling={isRolling} />
+            <button
+              onClick={processRoll}
+              disabled={isRolling || isGameOver || !bets.some(b => b.type !== 'ARCH') || (!hasRolled && !bets.some(b => b.type === 'ARCH'))}
+              className="roll-button"
+            >
+              ROLL
+            </button>
+            {isGameOver && (
+              <button onClick={resetGame} className="roll-button" style={{ border: '2px solid var(--gold)' }}>
+                RESTART
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
