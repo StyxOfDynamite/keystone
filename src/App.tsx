@@ -12,6 +12,7 @@ import {
   ARCH_PAYOUTS
 } from './game/engine';
 import type { Bet, BetType, BetResult } from './game/engine';
+import { Coffee } from 'lucide-react';
 import './game.css';
 import confetti from 'canvas-confetti';
 
@@ -224,6 +225,17 @@ function App() {
           </div>
         </div>
       </div>
+
+      <a
+        href="https://buymeacoffee.com/styxofdynamite"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="coffee-link"
+        title="Buy me a coffee"
+        aria-label="Buy me a coffee"
+      >
+        <Coffee size={24} strokeWidth={2} />
+      </a>
     </div>
   );
 }

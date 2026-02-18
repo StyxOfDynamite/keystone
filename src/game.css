@@ -36,6 +36,30 @@ body {
     justify-content: center;
 }
 
+.coffee-link {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(180deg, #faf8f4 0%, #e8e0d4 100%);
+    border: 2px solid rgba(139, 105, 20, 0.4);
+    border-radius: 50%;
+    color: #6b5a2e;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.coffee-link:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    color: #8b6914;
+}
+
 .game-container {
     display: flex;
     flex-direction: column;
