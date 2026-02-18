@@ -46,6 +46,24 @@ function App() {
     });
   };
 
+  const handleRemoveBet = (type: BetType, value: string | number) => {
+    if (isGameOver || isRolling) return;
+    if (type === 'ARCH' && hasRolled) return;
+
+    const existing = bets.find(b => b.type === type && b.value === value);
+    if (!existing) return;
+
+    setBalance(prev => prev + 10);
+    setBets(prev => {
+      if (existing.amount === 10) {
+        return prev.filter(b => !(b.type === type && b.value === value));
+      }
+      return prev.map(b =>
+        b.type === type && b.value === value ? { ...b, amount: b.amount - 10 } : b
+      );
+    });
+  };
+
   const processRoll = useCallback(async () => {
     if (isRolling || isGameOver) return;
     const hasArchBets = bets.some(b => b.type === 'ARCH');
@@ -177,6 +195,7 @@ function App() {
           <Arch activeTiles={activeTiles} />
           <BettingTable
         onPlaceBet={handlePlaceBet}
+        onRemoveBet={handleRemoveBet}
         bets={bets}
         activeTiles={activeTiles}
         hasRolled={hasRolled}

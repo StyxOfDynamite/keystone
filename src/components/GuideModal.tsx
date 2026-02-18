@@ -12,7 +12,7 @@ const GuideModal: React.FC<GuideModalProps> = ({ onClose }) => {
 
         <div className="guide-section">
           <h3>Setup</h3>
-          <p>Start with $100. Place at least one <strong>arch bet</strong> (on the stone bridge) and one <strong>inside bet</strong> before rolling.</p>
+          <p>Start with $100. Place at least one <strong>arch bet</strong> (on the stone bridge) and one <strong>inside bet</strong> before rolling. <strong>Alt+click</strong> a placed bet to remove it.</p>
         </div>
 
         <div className="guide-section">

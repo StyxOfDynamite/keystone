@@ -22,13 +22,12 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #1a120c;
-    color: #e8dcc8;
+    background-color: #f5f0e8;
+    color: #3d3529;
     font-family: 'Crimson Pro', Georgia, serif;
     overflow-x: hidden;
     background:
-        radial-gradient(ellipse at 50% 0%, rgba(232, 184, 74, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at center, #2a1f18 0%, #1a120c 70%, #0f0a06 100%);
+        linear-gradient(180deg, #faf8f4 0%, #f0ebe2 40%, #e8e0d4 100%);
 }
 
 #root {
@@ -100,17 +99,17 @@ h1 {
     font-family: 'Cinzel', serif;
     font-size: 3.5rem;
     font-weight: 700;
-    color: var(--gold);
+    color: #8b6914;
     text-transform: uppercase;
     letter-spacing: 14px;
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 168, 75, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .balance-display {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--tavern-amber);
+    color: #6b5a2e;
     margin-top: 8px;
     letter-spacing: 1px;
 }
@@ -221,13 +220,13 @@ h1 {
 }
 
 .bet-slot.red-tint {
-    background: rgba(139, 46, 46, 0.4);
-    border-color: rgba(100, 30, 30, 0.6);
+    background: #3d2020;
+    border-color: #2a1515;
 }
 
 .bet-slot.black-tint {
-    background: rgba(30, 25, 20, 0.6);
-    border-color: rgba(0, 0, 0, 0.5);
+    background: #1a1a18;
+    border-color: #0d0d0b;
 }
 
 .tile.keystone {
@@ -240,13 +239,13 @@ h1 {
     display: flex;
     gap: 40px;
     align-items: center;
-    background: linear-gradient(180deg, var(--wood-warm) 0%, var(--wood-dark) 100%);
+    background: linear-gradient(180deg, #e8e0d4 0%, #d8cfc2 100%);
     padding: 20px 40px;
     border-radius: 8px;
-    border: 3px solid var(--wood-grain);
+    border: 2px solid rgba(139, 105, 20, 0.3);
     box-shadow:
-        inset 0 2px 4px rgba(255, 255, 255, 0.08),
-        0 8px 24px rgba(0, 0, 0, 0.6);
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .dice-area {
@@ -325,9 +324,9 @@ h1 {
 
 .roll-button {
     font-family: 'Cinzel', serif;
-    background: linear-gradient(180deg, var(--wood-warm) 0%, var(--wood-dark) 100%);
-    color: var(--gold);
-    border: 2px solid var(--gold);
+    background: linear-gradient(180deg, #c9b896 0%, #a8926a 100%);
+    color: #3d3529;
+    border: 2px solid #8b6914;
     padding: 12px 30px;
     font-size: 1.4rem;
     font-weight: 700;
@@ -336,15 +335,15 @@ h1 {
     letter-spacing: 3px;
     transition: all 0.2s;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 4px 12px rgba(0, 0, 0, 0.5);
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .roll-button:hover:not(:disabled) {
-    background: linear-gradient(180deg, var(--gold) 0%, #b8923a 100%);
+    background: linear-gradient(180deg, #d4a84b 0%, #b8923a 100%);
     color: #1a120c;
     transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(212, 168, 75, 0.4);
+    box-shadow: 0 2px 12px rgba(139, 105, 20, 0.4);
 }
 
 /* --- MESSAGE AREA --- */
@@ -355,23 +354,27 @@ h1 {
     justify-content: center;
     font-size: 1.25rem;
     font-style: italic;
-    color: var(--tavern-amber);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color: #5c4a2a;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 /* --- BETTING BOARD (Worn pub table) --- */
 .betting-board {
-    background: linear-gradient(180deg, var(--felt-worn) 0%, var(--felt-green) 100%);
+    background: linear-gradient(180deg, #2d4a3a 0%, #1f3d2e 100%);
     padding: 30px;
     border: 10px solid var(--wood-grain);
     border-radius: 8px;
     box-shadow:
-        inset 0 0 60px rgba(0, 0, 0, 0.4),
-        0 15px 40px rgba(0, 0, 0, 0.7),
-        0 4px 0 var(--wood-dark);
+        inset 0 0 40px rgba(0, 0, 0, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.15),
+        0 2px 0 var(--wood-dark);
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.betting-board .bet-section-label {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .bet-section-label {
@@ -380,13 +383,13 @@ h1 {
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(232, 220, 200, 0.6);
+    color: rgba(61, 53, 41, 0.7);
     text-align: center;
 }
 
 .bet-section-divider {
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     margin: 0 20px;
 }
 
@@ -399,8 +402,8 @@ h1 {
 .bet-slot {
     width: 55px;
     height: 70px;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(0, 0, 0, 0.4);
+    background: #1e2e26;
+    border: 2px solid #0d1812;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
@@ -410,12 +413,17 @@ h1 {
     position: relative;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bet-slot .slot-label,
+.bet-slot .slot-payout {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .bet-slot:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(212, 168, 75, 0.3);
+    background: #2a3d32;
+    border-color: #1a2520;
 }
 
 .bet-slot.disabled {
@@ -472,17 +480,39 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid #0d1812;
     cursor: pointer;
     position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .red-slot {
     background: var(--bet-red);
+    border-color: #5a1818;
+}
+
+.red-slot .slot-label,
+.red-slot .slot-payout {
+    color: #fff;
 }
 
 .black-slot {
     background: var(--bet-black);
+    border-color: #0a0a08;
+}
+
+.black-slot .slot-label,
+.black-slot .slot-payout {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.inside-slot:not(.red-slot):not(.black-slot) {
+    background: #1e2e26;
+}
+
+.inside-slot:not(.red-slot):not(.black-slot) .slot-label,
+.inside-slot:not(.red-slot):not(.black-slot) .slot-payout {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* --- CHIPS --- */
@@ -515,7 +545,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
@@ -525,8 +555,8 @@ h1 {
 }
 
 .guide-modal {
-    background: linear-gradient(180deg, var(--wood-warm) 0%, var(--wood-dark) 100%);
-    border: 4px solid var(--gold);
+    background: linear-gradient(180deg, #faf8f4 0%, #f0ebe2 100%);
+    border: 2px solid rgba(139, 105, 20, 0.4);
     border-radius: 12px;
     padding: 36px 40px;
     max-width: 520px;
@@ -534,16 +564,15 @@ h1 {
     max-height: 85vh;
     overflow-y: auto;
     box-shadow:
-        0 0 60px rgba(212, 168, 75, 0.2),
-        0 25px 80px rgba(0, 0, 0, 0.8),
-        inset 0 0 40px rgba(0, 0, 0, 0.3);
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .guide-title {
     font-family: 'Cinzel', serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--gold);
+    color: #8b6914;
     text-align: center;
     margin: 0 0 24px;
     letter-spacing: 2px;
@@ -557,7 +586,7 @@ h1 {
     font-family: 'Cinzel', serif;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--tavern-amber);
+    color: #6b5a2e;
     margin: 0 0 8px;
     letter-spacing: 1px;
 }
@@ -566,7 +595,7 @@ h1 {
 .guide-section li {
     font-size: 0.95rem;
     line-height: 1.5;
-    color: #e8dcc8;
+    color: #3d3529;
     margin: 0;
 }
 
@@ -585,7 +614,7 @@ h1 {
     width: 100%;
     margin-top: 28px;
     padding: 14px 24px;
-    background: linear-gradient(180deg, var(--gold) 0%, #a67c2e 100%);
+    background: linear-gradient(180deg, #d4a84b 0%, #b8923a 100%);
     color: #1a120c;
     border: 2px solid #8a6b20;
     border-radius: 8px;
@@ -594,12 +623,12 @@ h1 {
     letter-spacing: 2px;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .guide-button:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(212, 168, 75, 0.5);
+    box-shadow: 0 4px 16px rgba(139, 105, 20, 0.3);
 }
 
 /* --- GAME OVER OVERLAY --- */
@@ -609,8 +638,8 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -621,10 +650,10 @@ h1 {
 .game-over-content {
     text-align: center;
     padding: 60px;
-    background: linear-gradient(180deg, var(--wood-warm) 0%, var(--wood-dark) 100%);
-    border: 4px solid var(--bet-red);
+    background: linear-gradient(180deg, #faf8f4 0%, #f0ebe2 100%);
+    border: 3px solid var(--bet-red);
     border-radius: 12px;
-    box-shadow: 0 0 50px rgba(139, 46, 46, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(139, 46, 46, 0.2);
     max-width: 600px;
     width: 90%;
     animation: scaleIn 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -638,22 +667,22 @@ h1 {
     text-transform: uppercase;
     margin: 0;
     letter-spacing: 6px;
-    text-shadow: 0 0 20px rgba(139, 46, 46, 0.8), 0 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     animation: pulsateRed 2s infinite ease-in-out;
 }
 
 .game-over-reason {
     font-size: 1.4rem;
-    color: var(--tavern-amber);
+    color: #5c4a2a;
     margin: 20px 0 40px;
     font-style: italic;
 }
 
 .restart-button-large {
     font-family: 'Cinzel', serif;
-    background: linear-gradient(180deg, var(--bet-red), #5a2020);
-    color: #f0e8dc;
-    border: 2px solid var(--gold);
+    background: linear-gradient(180deg, var(--bet-red), #6b2828);
+    color: #fff;
+    border: 2px solid #8b6914;
     padding: 15px 50px;
     font-size: 1.8rem;
     font-weight: 900;
@@ -699,11 +728,11 @@ h1 {
 
     0%,
     100% {
-        text-shadow: 0 0 20px rgba(139, 46, 46, 0.8), 0 2px 4px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     50% {
-        text-shadow: 0 0 35px rgba(139, 46, 46, 1), 0 2px 4px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 2px 4px rgba(139, 46, 46, 0.3);
         transform: scale(1.02);
     }
 }
