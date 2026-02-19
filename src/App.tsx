@@ -33,7 +33,13 @@ function App() {
 
   const handlePlaceBet = (type: BetType, value: string | number) => {
     if (isGameOver || isRolling) return;
-    if (balance < 10) return;
+    if (balance < 10) {
+      const hasArchBets = bets.some(b => b.type === 'ARCH');
+      setGameMessage(hasArchBets
+        ? 'No available funds! Alt+click a bet to remove it and free up cash.'
+        : 'Insufficient funds.');
+      return;
+    }
     // Arch bets are locked after the first roll
     if (type === 'ARCH' && hasRolled) return;
 
@@ -154,12 +160,12 @@ function App() {
     if (over) {
       setIsGameOver(true);
       setGameMessage(`Game Over: ${reason} Final balance: $${balance}`);
-    } else if (balance === 0 && !hasInsideBets && !isRolling) {
+    } else if (balance === 0 && !hasInsideBets && !isRolling && hasRolled) {
       setGameMessage('You are flat broke!');
       const t = setTimeout(() => setIsGameOver(true), 1500);
       return () => clearTimeout(t);
     }
-  }, [activeTiles, balance, bets, isRolling]);
+  }, [activeTiles, balance, bets, isRolling, hasRolled]);
 
   const resetGame = () => {
     setActiveTiles(INITIAL_TILES);
