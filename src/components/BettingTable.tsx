@@ -90,16 +90,20 @@ const BettingTable: React.FC<BettingTableProps> = ({ onPlaceBet, onRemoveBet, be
                     ? '🔒 Arch Bets (locked)'
                     : '⚓ Arch Bets — place before first roll'}
             </div>
-            <div className="betting-row arch-row">
-                {allTiles.map(renderArchSlot)}
+            <div className="betting-row-scroll">
+                <div className="betting-row arch-row">
+                    {allTiles.map(renderArchSlot)}
+                </div>
             </div>
 
             <div className="bet-section-divider" />
 
             {/* INSIDE NUMBER BETS — single turn */}
             <div className="bet-section-label">🎯 Inside Number Bets (this turn only)</div>
-            <div className="betting-row arch-row">
-                {allTiles.map(renderInsideNumberSlot)}
+            <div className="betting-row-scroll">
+                <div className="betting-row arch-row">
+                    {allTiles.map(renderInsideNumberSlot)}
+                </div>
             </div>
 
             {/* INSIDE GROUP BETS */}

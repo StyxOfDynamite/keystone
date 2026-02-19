@@ -199,36 +199,39 @@ function App() {
 
       <div className="game-main">
         <div className="game-board">
-          <Arch activeTiles={activeTiles} />
+          <div className="arch-column">
+            <div className="arch-wrapper">
+              <Arch activeTiles={activeTiles} />
+            </div>
+            <div className="game-controls">
+              <div className="message-area">
+                {gameMessage}
+              </div>
+              <div className="controls-area">
+                <Dice values={lastRoll} isRolling={isRolling} />
+                <button
+                  onClick={processRoll}
+                  disabled={isRolling || isGameOver || !bets.some(b => b.type !== 'ARCH') || (!hasRolled && !bets.some(b => b.type === 'ARCH'))}
+                  className="roll-button"
+                >
+                  ROLL
+                </button>
+                {isGameOver && (
+                  <button onClick={resetGame} className="roll-button" style={{ border: '2px solid var(--gold)' }}>
+                    RESTART
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
           <BettingTable
-        onPlaceBet={handlePlaceBet}
-        onRemoveBet={handleRemoveBet}
-        bets={bets}
-        activeTiles={activeTiles}
-        hasRolled={hasRolled}
-        lastRollResult={lastRollResult}
+            onPlaceBet={handlePlaceBet}
+            onRemoveBet={handleRemoveBet}
+            bets={bets}
+            activeTiles={activeTiles}
+            hasRolled={hasRolled}
+            lastRollResult={lastRollResult}
           />
-        </div>
-
-        <div className="game-controls">
-          <div className="message-area">
-            {gameMessage}
-          </div>
-          <div className="controls-area">
-            <Dice values={lastRoll} isRolling={isRolling} />
-            <button
-              onClick={processRoll}
-              disabled={isRolling || isGameOver || !bets.some(b => b.type !== 'ARCH') || (!hasRolled && !bets.some(b => b.type === 'ARCH'))}
-              className="roll-button"
-            >
-              ROLL
-            </button>
-            {isGameOver && (
-              <button onClick={resetGame} className="roll-button" style={{ border: '2px solid var(--gold)' }}>
-                RESTART
-              </button>
-            )}
-          </div>
         </div>
       </div>
 
